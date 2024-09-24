@@ -6,7 +6,7 @@ import cv2
 import numpy as np
 
 # If Tesseract is installed in a non-default location
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+#pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 # Title of the web app
 st.title("OCR and Document Search Web Application")
