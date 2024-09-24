@@ -1,5 +1,5 @@
 tesseract-ocr
-tesseract-ocr-hin  # Install Hindi language data
+tesseract-ocr-hin
 libglib2.0-0
 libsm6
 libxrender1
