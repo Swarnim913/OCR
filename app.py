@@ -8,22 +8,21 @@ import numpy as np
 # Apply custom CSS to style the UI
 st.markdown("""
     <style>
-        /* Slimmer, modern font for the app */
+        /* Modern font for the app */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
         
         html, body, [class*="css"]  {
             font-family: 'Roboto', sans-serif;
-            background-color: #f5f5f5;
         }
 
-        /* Customizing the title */
+        /* Title customization */
         .css-h2j5ae {
             color: #008080;
             font-weight: 700;
             margin-bottom: 20px;
         }
 
-        /* Style for buttons */
+        /* Button customization */
         .stButton>button {
             background-color: #008080;
             color: white;
@@ -32,19 +31,35 @@ st.markdown("""
             font-weight: 500;
         }
 
-        /* Extracted text area */
-        .stTextArea textarea {
+        /* Handle text area color for light and dark modes */
+        body[data-theme="light"] .stTextArea textarea {
             background-color: #f9f9f9;
+            color: black;
             border-radius: 8px;
             border: 1px solid #ddd;
             padding: 15px;
         }
 
-        /* Highlighted keyword box */
-        div[role="textbox"] {
+        body[data-theme="dark"] .stTextArea textarea {
+            background-color: black;
+            color: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+
+        /* Highlighted keyword box customization */
+        body[data-theme="light"] div[role="textbox"] {
             background-color: white;
             border-radius: 10px;
             padding: 15px;
+        }
+        
+        body[data-theme="dark"] div[role="textbox"] {
+            background-color: black;
+            border-radius: 10px;
+            padding: 15px;
+            color: white;
         }
         
         /* Customizing the upload section */
@@ -56,7 +71,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Title of the web app
-st.title("🖼️ OCR and Document Search Web Application")
+st.title("Swarnim's OCR & Keyword Search App 📚🔍")
 
 # Slim container to organize layout
 with st.container():
