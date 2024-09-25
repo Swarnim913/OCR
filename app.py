@@ -6,10 +6,12 @@ import cv2
 import numpy as np
 from io import BytesIO
 import base64
-import tempfile
 from gtts import gTTS
 import os
 from langdetect import detect
+
+# Specify Tesseract executable path
+pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 
 # Apply custom CSS to style the UI
 st.markdown("""

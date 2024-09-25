@@ -1,0 +1,9 @@
+tesseract-ocr
+tesseract-ocr-hin
+libglib2.0-0
+libsm6
+libxrender1
+libxext6
+libgtk2.0-dev
+libgl1-mesa-glx
+libtesseract-dev
