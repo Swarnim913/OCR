@@ -21,7 +21,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Custom header
-st.markdown("<div class='header'><h1>OCR & Keyword Search App 📚🔍</h1></div>", unsafe_allow_html=True)
+st.markdown("<div class='header'><h1>Swarnim's OCR & Keyword Search App 📚🔍</h1></div>", unsafe_allow_html=True)
 
 # Sidebar for additional features
 st.sidebar.header("🔧 Options")
@@ -175,6 +175,6 @@ if uploaded_image is not None:
 # Custom footer
 st.markdown("""
     <div class="footer">
-        <p>© 2023 OCR & Keyword Search App</p>
+        <p>Swarnim's OCR & Keyword Search App</p>
     </div>
 """, unsafe_allow_html=True)
