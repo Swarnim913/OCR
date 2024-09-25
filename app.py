@@ -100,7 +100,7 @@ if uploaded_image is not None:
     tts_lang = language_mapping.get(detected_lang, 'en')  # Default to English if not found
     
     # Text-to-Speech
-    if tts_enabled:
+    """if tts_enabled:
         try:
             tts = gTTS(text=cleaned_text, lang=tts_lang)
             tts_file = "tts_output.mp3"
@@ -111,7 +111,9 @@ if uploaded_image is not None:
             audio_file.close()
             os.remove(tts_file)
         except Exception as e:
-            st.error(f"An error occurred during Text-to-Speech: {e}")
+            st.error(f"An error occurred during Text-to-Speech: {e}")"""
+
+
     
     # Keyword search functionality
     search_query = st.text_input("🔍 Enter keyword(s) to search (comma-separated)")
