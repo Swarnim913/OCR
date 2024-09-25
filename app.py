@@ -43,11 +43,7 @@ case_sensitive = st.sidebar.checkbox("Case Sensitive Search", value=False)
 whole_word = st.sidebar.checkbox("Match Whole Word Only", value=False)
 
 
-"""
-# Text-to-speech option
-st.sidebar.subheader("🗣️ Text-to-Speech")
-tts_enabled = st.sidebar.checkbox("Enable Text-to-Speech", value=False)
-"""
+
 
 # Upload an image file
 uploaded_image = st.file_uploader("📤 Upload an Image (PNG, JPG, JPEG)", type=["png", "jpg", "jpeg"])
@@ -99,19 +95,8 @@ if uploaded_image is not None:
     # Map detected language to gTTS language code
     tts_lang = language_mapping.get(detected_lang, 'en')  # Default to English if not found
     
-    # Text-to-Speech
-    """if tts_enabled:
-        try:
-            tts = gTTS(text=cleaned_text, lang=tts_lang)
-            tts_file = "tts_output.mp3"
-            tts.save(tts_file)
-            audio_file = open(tts_file, 'rb')
-            audio_bytes = audio_file.read()
-            st.audio(audio_bytes, format='audio/mp3')
-            audio_file.close()
-            os.remove(tts_file)
-        except Exception as e:
-            st.error(f"An error occurred during Text-to-Speech: {e}")"""
+    
+    
 
 
     
