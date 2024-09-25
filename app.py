@@ -42,9 +42,12 @@ st.sidebar.subheader("🔍 Keyword Search Options")
 case_sensitive = st.sidebar.checkbox("Case Sensitive Search", value=False)
 whole_word = st.sidebar.checkbox("Match Whole Word Only", value=False)
 
+
+"""
 # Text-to-speech option
 st.sidebar.subheader("🗣️ Text-to-Speech")
 tts_enabled = st.sidebar.checkbox("Enable Text-to-Speech", value=False)
+"""
 
 # Upload an image file
 uploaded_image = st.file_uploader("📤 Upload an Image (PNG, JPG, JPEG)", type=["png", "jpg", "jpeg"])
