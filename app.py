@@ -67,9 +67,6 @@ if uploaded_image is not None:
     # Optionally, replace multiple blank lines with a single line
     cleaned_text = re.sub(r'\n\s*\n', '\n', cleaned_text)
     
-    # Language detection
-    detected_lang = detect(cleaned_text)
-    st.markdown(f"**Detected Language:** {detected_lang.upper()}")
     
     # Display the cleaned extracted text
     st.text_area("📄 Extracted Text", cleaned_text, height=300, placeholder="Extracted text will appear here...")
