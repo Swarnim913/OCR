@@ -1,47 +1,157 @@
 # Swarnim's OCR & Keyword Search App 📚🔍
 
-This is a Streamlit-based web application that performs Optical Character Recognition (OCR) on uploaded images, detects text, and allows users to search for keywords within the extracted text. Additionally, the app supports multiple languages for OCR, provides text highlighting, and offers options to download both the extracted text and an image with highlighted keywords.
+Welcome to the Swarnim's OCR (Optical Character Recognition) & Keyword Search App. This application allows you to upload images containing text, extract the text using OCR, perform keyword searches, highlight keywords in the text and image.
+
+## Table of Contents
+
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the App Locally](#running-the-app-locally)
+- [Deployment](#deployment)
+  - [Deploying on Streamlit Cloud](#deploying-on-streamlit-cloud)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
-- **Multilingual OCR**: Supports multiple languages (English, Hindi, French, Spanish, German) for text extraction.
-- **Keyword Search**: Search for specific keywords in the extracted text, with options for case-sensitive search and matching whole words only.
-- **Text Highlighting**: Highlights keywords in both the extracted text and the original image.
-- **Downloadable Outputs**: Users can download the extracted text as a `.txt` file and the highlighted image as a `.png` file.
-- **Detected Language**: Automatically detects the language of the extracted text.
-- **Customizable Options**: Users can configure OCR languages and search options via a sidebar.
+- **Multi-language OCR**: Supports OCR in multiple languages including English, Hindi, French, Spanish, and German.
+- **Keyword Search**: Search for multiple keywords in the extracted text with options for case sensitivity and whole-word matching.
+- **Text Highlighting**: Highlights found keywords in both the extracted text and the uploaded image.
+- **Download Options**: Allows downloading the extracted text and the image with highlighted keywords.
+- **User-friendly Interface**: Clean and modern UI with customizable options in the sidebar.
 
-## Deployment on Streamlit Cloud
+## Prerequisites
 
-Follow these steps to deploy the app on **Streamlit Cloud**:
+Before you begin, ensure you have met the following requirements:
 
-### Step 1: Prepare Your Repository
+- **Operating System**: Windows, macOS, or Linux
+- **Python Version**: Python 3.7 or higher
 
-Ensure that your project includes the following files:
+## Installation
 
-1. `app.py` – The main Python file containing the Streamlit app.
-2. `requirements.txt` – A file listing all Python dependencies required for the app.
-3. `packages.txt` – A file listing the system-level dependencies (for example, Tesseract).
+Follow these steps to set up the environment and install the necessary dependencies.
 
-### Step 2: Create `requirements.txt`
+### 1. Clone the Repository
 
-Add the following to `requirements.txt` to ensure all necessary Python libraries are installed:
+```bash
+git clone https://github.com/Swarnim913/OCR.git
+cd OCR
+```
+
+### 2. Create a Virtual Environment (Optional but Recommended)
+
+#### Using `venv`
+
+```bash
+python -m venv venv
+source venv/bin/activate      # On macOS/Linux
+venv\Scripts\activate         # On Windows
+```
+
+### 3. Install Python Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+**Contents of `requirements.txt`:**
 
 ```txt
 streamlit
-opencv-python-headless
-Pillow
 pytesseract
+Pillow
+opencv-python-headless
 numpy
 gTTS
 langdetect
 ```
 
-> **Note**: Use `opencv-python-headless` instead of `opencv-python` as it’s better suited for deployment in headless environments like Streamlit Cloud.
+### 4. Install Tesseract OCR
 
-### Step 3: Create `packages.txt`
+#### macOS
 
-The `packages.txt` file is required to install system-level dependencies. Add the following to `packages.txt` to ensure that Tesseract and other required libraries are installed:
+Install via Homebrew:
+
+```bash
+brew install tesseract
+brew install tesseract-lang
+```
+
+#### Ubuntu/Linux
+
+```bash
+sudo apt-get update
+sudo apt-get install tesseract-ocr
+sudo apt-get install libtesseract-dev
+sudo apt-get install tesseract-ocr-eng tesseract-ocr-hin tesseract-ocr-fra tesseract-ocr-spa tesseract-ocr-deu
+```
+
+#### Windows
+
+Download the Tesseract installer from the [official repository](https://github.com/UB-Mannheim/tesseract/wiki). Install Tesseract and note the installation path (usually `C:\Program Files\Tesseract-OCR`).
+
+### 5. Configure `pytesseract`
+
+If you're on Windows or if `pytesseract` cannot find the Tesseract executable, specify the path in your code.
+
+#### For Windows Users:
+
+In your Python script (e.g., `app.py`), add:
+
+```python
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+```
+
+#### For macOS/Linux Users:
+
+Usually, Tesseract is installed in a standard location, and `pytesseract` can find it automatically. If not, specify the path:
+
+```python
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd = '/usr/local/bin/tesseract'
+```
+
+## Running the App Locally
+
+### 1. Start the Streamlit App
+
+In your terminal, run:
+
+```bash
+streamlit run app.py
+```
+
+### 2. Open in Browser
+
+After running the command, Streamlit will provide a local URL (usually `http://localhost:8501`). Open this URL in your web browser to interact with the app.
+
+## Deployment
+
+### Deploying on Streamlit Cloud
+
+You can deploy the app on Streamlit Cloud to make it accessible over the internet.
+
+#### 1. Prepare Your Repository
+
+- Ensure your app script (e.g., `app.py`) is in the root directory.
+- Include `requirements.txt` and `packages.txt` in the root directory.
+
+**Contents of `requirements.txt`:**
+
+```txt
+streamlit
+pytesseract
+Pillow
+opencv-python-headless
+numpy
+gTTS
+langdetect
+```
+
+**Contents of `packages.txt`:**
 
 ```txt
 tesseract-ocr
@@ -51,61 +161,62 @@ tesseract-ocr-fra
 tesseract-ocr-spa
 tesseract-ocr-deu
 libtesseract-dev
-
 ```
 
-This will ensure that Tesseract is available on your Streamlit Cloud instance.
+#### 2. Push to GitHub
 
-### Step 4: Deploy to Streamlit Cloud
+Ensure your code is pushed to a GitHub repository.
 
-1. Push the project to a GitHub repository.
-2. Go to [Streamlit Cloud](https://share.streamlit.io/) and sign in.
-3. Click on **New app** and connect your GitHub repository.
-4. Select the branch and the app file (e.g., `app.py`).
-5. Click **Deploy**.
+#### 3. Deploy on Streamlit Cloud
 
-Streamlit Cloud will automatically install the dependencies listed in `requirements.txt` and `packages.txt`.
+- Go to [Streamlit Cloud](https://share.streamlit.io/).
+- Sign in with your GitHub account.
+- Click on **"New app"** and select your repository and branch.
+- Provide the path to your Python script (e.g., `app.py`).
+- Click **"Deploy"**.
 
-## App Structure
+#### 4. Monitor Deployment
 
-### Sidebar Options
-- **OCR Languages**: Select one or more languages for the OCR process (default is English).
-- **Keyword Search Options**:
-  - **Case Sensitive**: Toggle to enable case-sensitive keyword search.
-  - **Whole Word Only**: Toggle to search for whole words only.
+- Streamlit Cloud will install the dependencies specified in `requirements.txt` and `packages.txt`.
+- Monitor the logs for any errors.
+- Once deployed, your app will be accessible via a public URL provided by Streamlit.
 
-### Main UI
-- **Image Upload**: Upload an image (PNG, JPG, JPEG) for text extraction.
-- **Extracted Text Display**: View the extracted text in a scrollable text box.
-- **Detected Language**: Automatically detects the language of the extracted text.
-- **Keyword Search**: Enter keywords (comma-separated) to search for them in the extracted text.
-- **Keyword Highlighting**: Keywords are highlighted in both the extracted text and the image.
+#### 5. Common Deployment Issues
 
-### Downloadable Outputs
-- **Download Extracted Text**: Download the extracted text as a `.txt` file.
-- **Download Highlighted Image**: Download the image with highlighted keywords as a `.png` file.
+- **App Hangs on Deployment**: If the app takes too long to deploy or hangs, ensure that `requirements.txt` and `packages.txt` are correct and do not include unnecessary large packages.
+- **Tesseract Not Found**: Ensure that `tesseract-ocr` and the required language data packages are specified in `packages.txt`.
 
-## Additional Information
+## Usage
 
-- **Custom Tesseract Configuration**: The app uses Tesseract’s `--oem 3` and `--psm 6` configuration for better accuracy in text extraction.
-- **Highlighting in Images**: The app draws green rectangles around the keywords found in the image using OpenCV.
+1. **Upload an Image**: Click on the uploader to select an image file (PNG, JPG, JPEG) containing text.
 
-## Modules Used
+2. **Select OCR Language(s)**: In the sidebar, select the language(s) present in the image.
 
-- `streamlit`: For building the web application interface.
-- `Pillow`: For handling image operations.
-- `pytesseract`: For performing Optical Character Recognition (OCR).
-- `opencv-python`: For processing and highlighting text in the uploaded image.
-- `numpy`: For image manipulation with OpenCV.
-- `gTTS`: (Optional) For converting the extracted text to speech.
-- `langdetect`: For detecting the language of the extracted text.
-- `re`: For regular expressions used in keyword search and text highlighting.
-- `base64`: For encoding images and text for downloading.
+3. **Configure Keyword Search Options**:
+   - **Case Sensitive Search**: Enable if you want the search to be case-sensitive.
+   - **Match Whole Word Only**: Enable to match whole words only.
 
-## Future Improvements
+4. **View Extracted Text**: After uploading, the app will display the extracted text.
 
-- Support for more OCR languages.
-- Integration with cloud services for large-scale OCR processing.
-- Advanced text analytics such as sentiment analysis on the extracted text.
+5. **Download Options**:
+   - **Download Extracted Text**: Click the link to download the text as a `.txt` file.
+   - **Download Highlighted Image**: After performing a keyword search, download the image with highlighted keywords.
 
+6. **Perform Keyword Search**:
+   - Enter one or more keywords (comma-separated) in the input box.
+   - The app will search for these keywords in the extracted text.
+   - Found keywords will be highlighted in the text and the image.
 
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Open a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
